@@ -50,7 +50,6 @@
 </head>
 <body>
 <h1 id = "title"> Aleksandr Samets </h1>
-<p>A work in progress...</p>
 <div id="container">
   <div id="graph"></div>
   <div id="sections">
@@ -68,6 +67,11 @@
 <div id="footer"></div>
 
 <script>
+
+const gs = d3.graphScroll()
+        .container(d3.select("#container"))
+        .eventId('sec1_id')
+        .sections(d3.selectAll("#container #sections > section"))
 
 </script>
 </body>
