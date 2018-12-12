@@ -8,17 +8,17 @@
   <script src="graph-scroll.js"></script>
   <style>
     body{
-      max-width: 900px;
+      max-width: 750px;
       margin: 0px auto;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: "avenir next", Helvetica, Arial, sans-serif;
     }
     #title{
       text-align: center;
-      font-weight: 500;
+      font-weight: 450;
     }
 
     #subtitle{
-      font-weight: 300;
+      font-weight: 400;
     }
 
     #container{
@@ -31,12 +31,22 @@
     }
 
     #sections > section{
-        opacity: .2;
+        opacity: .1;
         margin-bottom: 200px;
     }
 
     #sections > section.graph-scroll-active{
         opacity: 1;
+    }
+
+    #section2
+
+    #footer{
+        height:200px;
+    }
+
+    #para{
+      font-size: 13px
     }
 
 
@@ -52,16 +62,25 @@
 <body>
 <h1 id = "title"> Aleksandr Samets </h1>
 <div id="container">
-  <div id="graph"></div>
+  <div id="graph">
+  </div>
   <div id="sections">
     <section>
-      <h2 id="subtitle">Information</h2>
+      <h2 id="subtitle">About</h2>
+      <p id ="para"> I am a junior undergraduate student at Middlebury College
+      studying Computer Science.  </p>
     </section>
     <section>
-      <h2 id="subtitle">More Information</h2>
+      <h2 id="subtitle">Reading</h2>
     </section>
     <section>
-      <h2 id="subtitle">Even More Information</h2>
+      <h2 id="subtitle">Projects</h2>
+    </section>
+    <section>
+      <h2 id="subtitle">Links</h2>
+      <p id="para"><a href="https://twitter.com/notAleksandr">Twitter</a></p>
+      <p id="para"><a href="https://www.linkedin.com/in/aleksandr-samets-424890130/">LinkedIn</a></p>
+      <p id="para"><a href="https://www.instagram.com/aleksandrsamets/">Instagram</a></p>
     </section>
   </div>
 </div>
