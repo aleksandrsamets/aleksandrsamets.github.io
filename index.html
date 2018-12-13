@@ -39,7 +39,9 @@
         opacity: 1;
     }
 
-    #section2
+    #bullet {
+      font-size: 13px
+    }
 
     #footer{
         height:200px;
@@ -50,37 +52,53 @@
     }
 
 
-    #graph{
-      margin-left: 40px;
-      width: 500px;
+    #picture{
+      width: 375px;
+      height: 375px;
       position: sticky;
       top: 20px;
       float: right;
+    }
+
+
+    #biopicture{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-width: 1.2px;
+      width: 250px;
+      height: 250px;
     }
   </style>
 </head>
 <body>
 <h1 id = "title"> Aleksandr Samets </h1>
 <div id="container">
-  <div id="graph">
+  <div id="picture">
+    <!-- <img id = "biopicture" src="DSC_0020.jpg" > -->
   </div>
   <div id="sections">
     <section>
       <h2 id="subtitle">About</h2>
-      <p id ="para"> I am a junior undergraduate student at Middlebury College
-      studying Computer Science.  </p>
-    </section>
-    <section>
-      <h2 id="subtitle">Reading</h2>
+      <p id ="para"> Currently, I am a junior undergraduate student at Middlebury College
+      studying Computer Science. </p>
+      <p id ="para">Though born in Belarus, I was raised in the United States. </p>
+      <p id ="para"> Summer 2018: MSIM Growth Team</p>
     </section>
     <section>
       <h2 id="subtitle">Projects</h2>
+      <p>...</p>
     </section>
     <section>
-      <h2 id="subtitle">Links</h2>
-      <p id="para"><a href="https://twitter.com/notAleksandr">Twitter</a></p>
-      <p id="para"><a href="https://www.linkedin.com/in/aleksandr-samets-424890130/">LinkedIn</a></p>
-      <p id="para"><a href="https://www.instagram.com/aleksandrsamets/">Instagram</a></p>
+      <h2 id="subtitle">Reading</h2>
+      <ul id="bullet">
+        Oct. 2018 - The Most Important Thing <br>
+        Nov. 2018 - Zero to One <br>
+    </section>
+    <section>
+      <h2 id="subtitle">Connect</h2>
+      <img src="twitterlogo.png" alt="logo" height="15" width="20" />             <a href="https://twitter.com/AleksandrSamets">Twitter</a><br>
+      <img src="linkedinlogo.png" alt="logo" height="20" width="20" />            <a href="https://www.linkedin.com/in/aleksandr-samets-424890130/">LinkedIn</a><br>
     </section>
   </div>
 </div>
@@ -88,10 +106,77 @@
 
 <script>
 
+const svg = d3.select("#picture").append("svg")
+  .attr("id", "biopicture")
+  .attr("width", 375)
+  .attr("height", 375)
+
+const biopicFunction = function(){
+  let opacity = 0
+  const addedImage = svg.selectAll("image").data([0])
+    .enter()
+    .append("image")
+    .attr("id","actualImage")
+    .attr("xlink:href", "DSC_0020.jpg") //this photo was taken by Kara Huang
+    .attr("x", "0")
+    .attr("y", "0")
+    .attr("width", "250")
+    .attr("height", "250")
+    .attr("opacity", opacity)
+
+    const update_chart =  function(){
+            addedImage.transition()
+            .duration(800)
+            .style("opacity", opacity)
+
+        }
+    update_chart.opacity = (new_opacity)=>{
+            if (new_opacity !==undefined){
+                opacity = new_opacity;
+                return update_chart;
+            }else{
+                return opacity;
+            }
+        }
+
+        return update_chart;
+
+}
+const myImage = biopicFunction()
 const gs = d3.graphScroll()
         .container(d3.select("#container"))
+        .graph(d3.select("#picture"))
         .eventId('sec1_id')
         .sections(d3.selectAll("#container #sections > section"))
+        .on("active", function(i){
+            vis_steps[i]();
+        });
+
+
+const function1 = function(){
+  myImage.opacity(1)
+  myImage()
+}
+const function2 = function(){
+  myImage.opacity(0)
+  myImage()
+}
+const function3 = function() {
+  console.log("workd3");
+}
+const function4 = function() {
+  console.log("workd4");
+}
+
+
+
+
+
+
+
+
+
+var vis_steps = [function1,function2,function3,function4]
 
 </script>
 </body>
