@@ -3,7 +3,7 @@
   typeof define === 'function' && define.amd ? define(['exports', 'd3'], factory) :
   (factory((global.d3 = global.d3 || {}),global.d3));
 }(this, function (exports,d3) { 'use strict';
-
+//Thank you Professor Christopher Andrews for most if not all of this code. 
   function graphScroll(){
     var windowHeight,
         dispatch = d3.dispatch("scroll", "active"),
